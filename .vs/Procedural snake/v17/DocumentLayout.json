@@ -1,0 +1,91 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\dacko\\Unity\\Procedural snake\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4EF2BBED-0118-3566-DE5D-241A3E9AAD47}|Assembly-CSharp.csproj|C:\\Users\\dacko\\Unity\\Procedural snake\\assets\\snakecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EF2BBED-0118-3566-DE5D-241A3E9AAD47}|Assembly-CSharp.csproj|solutionrelative:assets\\snakecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EF2BBED-0118-3566-DE5D-241A3E9AAD47}|Assembly-CSharp.csproj|c:\\users\\dacko\\unity\\procedural snake\\assets\\rendersnake.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EF2BBED-0118-3566-DE5D-241A3E9AAD47}|Assembly-CSharp.csproj|solutionrelative:assets\\rendersnake.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EF2BBED-0118-3566-DE5D-241A3E9AAD47}|Assembly-CSharp.csproj|C:\\Users\\dacko\\Unity\\Procedural snake\\assets\\segment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EF2BBED-0118-3566-DE5D-241A3E9AAD47}|Assembly-CSharp.csproj|solutionrelative:assets\\segment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EF2BBED-0118-3566-DE5D-241A3E9AAD47}|Assembly-CSharp.csproj|C:\\Users\\dacko\\Unity\\Procedural snake\\assets\\distanceconstrain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EF2BBED-0118-3566-DE5D-241A3E9AAD47}|Assembly-CSharp.csproj|solutionrelative:assets\\distanceconstrain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RenderSnake.cs",
+              "DocumentMoniker": "C:\\Users\\dacko\\Unity\\Procedural snake\\Assets\\RenderSnake.cs",
+              "RelativeDocumentMoniker": "Assets\\RenderSnake.cs",
+              "ToolTip": "C:\\Users\\dacko\\Unity\\Procedural snake\\Assets\\RenderSnake.cs",
+              "RelativeToolTip": "Assets\\RenderSnake.cs",
+              "ViewState": "AQIAAHAAAAAAAAAAAAAkwGwAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T19:14:36.453Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Segment.cs",
+              "DocumentMoniker": "C:\\Users\\dacko\\Unity\\Procedural snake\\Assets\\Segment.cs",
+              "RelativeDocumentMoniker": "Assets\\Segment.cs",
+              "ToolTip": "C:\\Users\\dacko\\Unity\\Procedural snake\\Assets\\Segment.cs",
+              "RelativeToolTip": "Assets\\Segment.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAQwBoAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T15:12:50.156Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SnakeController.cs",
+              "DocumentMoniker": "C:\\Users\\dacko\\Unity\\Procedural snake\\Assets\\SnakeController.cs",
+              "RelativeDocumentMoniker": "Assets\\SnakeController.cs",
+              "ToolTip": "C:\\Users\\dacko\\Unity\\Procedural snake\\Assets\\SnakeController.cs",
+              "RelativeToolTip": "Assets\\SnakeController.cs",
+              "ViewState": "AQIAAEIAAAAAAAAAAAAowFUAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T12:33:10.468Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DistanceConstrain.cs",
+              "DocumentMoniker": "C:\\Users\\dacko\\Unity\\Procedural snake\\Assets\\DistanceConstrain.cs",
+              "RelativeDocumentMoniker": "Assets\\DistanceConstrain.cs",
+              "ToolTip": "C:\\Users\\dacko\\Unity\\Procedural snake\\Assets\\DistanceConstrain.cs",
+              "RelativeToolTip": "Assets\\DistanceConstrain.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABEAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T12:09:04.01Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
