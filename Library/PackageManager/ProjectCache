@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638905969639889103
-    m_Hash: 1772556187
+      ticks: 638908656737202732
+    m_Hash: 2863587038
   m_LockFileStatus:
     m_FilePath: C:/Users/dacko/Unity/Procedural snake/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638905969639944910
-    m_Hash: 580742790
+      ticks: 638908656737212700
+    m_Hash: 1921597845
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:

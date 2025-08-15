@@ -16,6 +16,8 @@ public class SnakeController : MonoBehaviour
     private DistanceConstrain distanceConstrain;
     [SerializeField]
     private RenderSnake renderSnake;
+    [SerializeField]
+    private LayerMask obstacle_mask;
     public void RotateOnAxis()
     {
         // Поточний кут обертання
@@ -70,7 +72,17 @@ public class SnakeController : MonoBehaviour
             v_input = 0;
         }
         segments[0].SetPosition(segments[0].GetPosition() + (segments[0].GetPosition() - segments[1].GetPosition()) * speed * v_input * Time.deltaTime);
-        renderSnake.DrawSnakeMesh(segments);
+
+        foreach (Segment segment in segments)
+        {
+            Collider2D hit = Physics2D.OverlapCircle(segment.GetPosition(), segment.GetRadius(), obstacle_mask);
+            if (hit != null)
+            {
+                // Виштовхування сегмента з колайдера
+                Vector2 dir = (segment.GetPosition() - new Vector2(hit.bounds.center.x, hit.bounds.center.y)).normalized;
+                segment.SetPosition(hit.ClosestPoint(segment.GetPosition()) + dir * segment.GetRadius());
+            }
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -81,9 +93,10 @@ public class SnakeController : MonoBehaviour
             Segment segment = new Segment(0.5f, newPos);
             AddSegment(segment);
         }
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab)&& segments.Count() > 1)
         {
             RemoveSegment(segments[segments.Count() - 1]);
         }
+        renderSnake.DrawSnakeMesh(segments);
     }
 }

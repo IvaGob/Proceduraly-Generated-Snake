@@ -47,6 +47,7 @@ public class RenderSnake : MonoBehaviour
         lr_global = b.GetLeftAndRightPointsOnSphere();
         Vector2[] lr_b = { ConvertGlobalToLocalPoint(lr_global[0]), ConvertGlobalToLocalPoint(lr_global[1])};
         //
+        int baseIndex = vertices.Count;
         vertices.Add(lr_a[0]);
         vertices.Add(lr_a[1]);
         vertices.Add(lr_b[0]);
@@ -57,7 +58,7 @@ public class RenderSnake : MonoBehaviour
         uv.Add(new Vector2(0, 0));
         uv.Add(new Vector2(1, 0));
         //
-        int baseIndex = i * 4;
+        //int baseIndex = i * 4;
         triangles.Add(baseIndex + 0);
         triangles.Add(baseIndex + 1);
         triangles.Add(baseIndex + 2);
@@ -74,6 +75,7 @@ public class RenderSnake : MonoBehaviour
         Vector2[] lr_a = { ConvertGlobalToLocalPoint(lr_global[0]), ConvertGlobalToLocalPoint(lr_global[1]) };
         Vector2 end_p = ConvertGlobalToLocalPoint(a.GetBackPoint());
         //
+        int baseIndex = vertices.Count;
         vertices.Add(lr_a[0]);
         vertices.Add(lr_a[1]);
         vertices.Add(end_p);
@@ -83,7 +85,7 @@ public class RenderSnake : MonoBehaviour
         uv.Add(new Vector2(0.5f, 0));
         //
         //
-        int baseIndex = i * 4;
+        //int baseIndex = i * 4;
         triangles.Add(baseIndex + 0);
         triangles.Add(baseIndex + 1);
         triangles.Add(baseIndex + 2);
@@ -96,6 +98,7 @@ public class RenderSnake : MonoBehaviour
         Vector2 start_p = ConvertGlobalToLocalPoint(a.GetPointOnCircleAtAngle(0));
         Vector2[] sides_p = { ConvertGlobalToLocalPoint(a.GetPointOnCircleAtAngle(face_angle)), ConvertGlobalToLocalPoint(a.GetPointOnCircleAtAngle(-face_angle))};
         //
+        int baseIndex = vertices.Count;
         vertices.Add(lr_a[0]);
         vertices.Add(sides_p[0]);
         vertices.Add(sides_p[1]);
@@ -109,7 +112,7 @@ public class RenderSnake : MonoBehaviour
         uv.Add(new Vector2(0.5f, 1));
         //
         //
-        int baseIndex = i * 4 + 3;
+        //int baseIndex = i * 4 + 3;
         triangles.Add(baseIndex + 0);
         triangles.Add(baseIndex + 1);
         triangles.Add(baseIndex + 2);
@@ -124,6 +127,9 @@ public class RenderSnake : MonoBehaviour
     }
     public void DrawSnakeMesh(Segment[] segments)
     {
+        if (segments.Length < 2)
+            return; // Занадто мало сегментів для побудови
+        mesh.Clear();
         //
         vertices.Clear();
         uv.Clear();
@@ -140,6 +146,15 @@ public class RenderSnake : MonoBehaviour
         DrawMeshForHead(segments[0], index);
         //
         DrawEyes(segments[0]);
+        //
+        if (uv.Count != vertices.Count)
+        {
+            Debug.LogError("UV count != vertices count. UV: " + uv.Count + " Vertices: " + vertices.Count);
+        }
+        if (triangles.Count % 3 != 0)
+        {
+            Debug.LogError("Triangles count is not divisible by 3: " + triangles.Count);
+        }
         //
         gameObject.GetComponent<MeshFilter>().mesh.vertices = vertices.ToArray();
         gameObject.GetComponent<MeshFilter>().mesh.uv = uv.ToArray();
