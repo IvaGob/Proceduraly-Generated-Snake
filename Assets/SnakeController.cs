@@ -9,7 +9,7 @@ public class SnakeController : MonoBehaviour
     [SerializeField]
     public float speed;
     [SerializeField]
-    private Segment[] segments = new Segment[3];
+    private Segment[] segments = new Segment[5];
     [SerializeField]
     public float rotate_speed;
     [SerializeField]
@@ -18,6 +18,8 @@ public class SnakeController : MonoBehaviour
     private RenderSnake renderSnake;
     [SerializeField]
     private LayerMask obstacle_mask;
+    [SerializeField]
+    private LayerMask apple_mask;
     public void RotateOnAxis()
     {
         // Поточний кут обертання
@@ -46,6 +48,15 @@ public class SnakeController : MonoBehaviour
         segments = segments_list.ToArray();
         distanceConstrain.SetPoints(segments);
     }
+    public void AddSegmentAfterSegment(Segment last_segment, float new_radius)
+    {
+        Vector2 lastPos = last_segment.GetPosition();
+        Vector2 lastDir = last_segment.GetDirection();
+        float last_radius = last_segment.GetRadius();
+        Vector2 newPos = lastPos - lastDir * (last_radius * 2);
+        Segment segment = new Segment(new_radius, newPos);
+        AddSegment(segment);
+    }
     public void RemoveSegment(Segment segment)
     {
         List<Segment> segments_list = segments.ToList();
@@ -56,8 +67,10 @@ public class SnakeController : MonoBehaviour
     private void Start()
     {
         segments[0] = new Segment(0.5f, new Vector2(-0.3370109f, -0.06301107f));
-        segments[1] = new Segment(0.5f, new Vector2(0.77f, -0.06301107f));
-        segments[2] = new Segment(0.5f, new Vector2(1.85f, -0.06301107f));
+        segments[1] = new Segment(0.4f, new Vector2(0.77f, -0.06301107f));
+        segments[2] = new Segment(0.3f, new Vector2(1.85f, -0.06301107f));
+        segments[3] = new Segment(0.2f, new Vector2(3f, -0.06301107f));
+        segments[4] = new Segment(0.1f, new Vector2(4f, -0.06301107f));
         distanceConstrain.SetPoints(segments);
     }
     // Update is called once per frame
@@ -86,17 +99,52 @@ public class SnakeController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Vector2 lastPos = segments[segments.Count() - 1].GetPosition();
-            Vector2 lastDir = segments[segments.Count() - 1].GetDirection();
-            float last_radius = segments[segments.Count() - 1].GetRadius();
-            Vector2 newPos = lastPos - lastDir * (last_radius * 2);
-            Segment segment = new Segment(0.5f, newPos);
-            AddSegment(segment);
+            // Додаємо новий сегмент
+            AddSegmentAfterSegment(segments[segments.Count() - 1], 0.1f);
+
+            // Тепер змінюємо радіуси останніх 5-ти для плавного хвоста
+            segments[segments.Count() - 5].SetRadius(0.45f);
+            segments[segments.Count() - 4].SetRadius(0.4f);
+            segments[segments.Count() - 3].SetRadius(0.3f);
+            segments[segments.Count() - 2].SetRadius(0.2f);
+            segments[segments.Count() - 1].SetRadius(0.1f);
         }
-        if (Input.GetKeyDown(KeyCode.Tab)&& segments.Count() > 1)
+        if (Input.GetKeyDown(KeyCode.Tab)&& segments.Count() > 5)
         {
             RemoveSegment(segments[segments.Count() - 1]);
+            //Зміна радіусів для гарного хвоста
+            segments[segments.Count() - 1].SetRadius(0.1f);
+            segments[segments.Count() - 2].SetRadius(0.2f);
+            segments[segments.Count() - 3].SetRadius(0.3f);
+            segments[segments.Count() - 4].SetRadius(0.4f);
+            segments[segments.Count() - 5].SetRadius(0.45f);
         }
         renderSnake.DrawSnakeMesh(segments);
+
+        RaycastHit2D apple_hit = segments[0].CastForwardCircle(0.5f, apple_mask);
+
+        
+        if (apple_hit.collider != null)
+        {
+            GameObject hit_obj = apple_hit.collider.gameObject;
+            Destroy(hit_obj);
+            // Додаємо новий сегмент
+            AddSegmentAfterSegment(segments[segments.Count() - 1], 0.1f);
+
+            // Тепер змінюємо радіуси останніх 5-ти для плавного хвоста
+            segments[segments.Count() - 5].SetRadius(0.45f);
+            segments[segments.Count() - 4].SetRadius(0.4f);
+            segments[segments.Count() - 3].SetRadius(0.3f);
+            segments[segments.Count() - 2].SetRadius(0.2f);
+            segments[segments.Count() - 1].SetRadius(0.1f);
+        }
+        for(int i = 1; i < segments.Count(); i++)
+        {
+            if (segments[0].CheckIfInsideOtherSegment(segments[i]))
+            {
+                Debug.Log("Hit!");
+                Time.timeScale = 0f;
+            }
+        }
     }
 }

@@ -138,7 +138,6 @@ public class RenderSnake : MonoBehaviour
         for (int i = 0; i < segments.Length-1; i++)
         {
             DrawMeshBetweenTwoSegments(segments[i], segments[i + 1],i);
-            Debug.Log(i);   
         }
         //
         int index = segments.Length - 1;

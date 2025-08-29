@@ -98,4 +98,17 @@ public class Segment
         Vector2 backPoint = center - perp * this.GetRadius();
         return backPoint;
     }
+    //
+    public RaycastHit2D CastForwardCircle(float maxDistance, LayerMask layerMask)
+    {
+        // ѕускаЇмо пром≥нь уперед
+        RaycastHit2D hit = Physics2D.CircleCast(position, maxDistance, direction.normalized, 0f, layerMask);
+
+        return hit;
+    }
+    public bool CheckIfInsideOtherSegment(Segment other)
+    {
+        float distance = Vector2.Distance(this.GetPointOnCircleAtAngle(0),other.GetPosition());
+        return distance <= other.GetRadius();
+    }
 }
